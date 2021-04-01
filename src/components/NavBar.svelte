@@ -2,36 +2,31 @@
     import {
         NavigationDrawer,
         ListItem,
+        Overlay,
+        Button,
+        Icon,
     } from "svelte-materialify";
-    import SearchBar from "./SearchBar.svelte"
+    import SearchBar from "./SearchBar.svelte";
+    import { mdiFeatureSearchOutline } from "@mdi/js";
 
-    let mini = true;
-    function mouseenter() {
-        mini = false;
+    let active = false;
+    function open() {
+        active = true;
     }
-    function mouseleave() {
-        mini = true;
+    function close() {
+        active = false;
     }
 </script>
 
 <style>
-    div {
-        display: inline-block;
-        height: 100%;
-        background-color: darkgray;
-    }
-    span {
-        margin: 1em;
-    }
 </style>
 
-<div on:mouseenter={mouseenter} on:mouseleave={mouseleave}>
-    <NavigationDrawer {mini}>
-        <ListItem>
-            <span slot="prepend">
-                <p>Search</p>
-              </span>
-            <SearchBar />
-        </ListItem>
-    </NavigationDrawer>
-</div>
+<Overlay {active} index={1} on:click={close} />
+<NavigationDrawer absolute {active}>
+    <ListItem>
+        <SearchBar />
+    </ListItem>
+</NavigationDrawer>
+<Button fab class="blue white-text" on:click={open}>
+    <Icon path={mdiFeatureSearchOutline} />
+</Button>
