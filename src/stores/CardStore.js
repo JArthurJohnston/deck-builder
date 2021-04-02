@@ -6,8 +6,13 @@ export const deck = writable({
     cards: []
 });
 
-export function setCommander(card){
-    deck.update({
-        
-    })
+const storedDeck = localStorage.getItem("DECK")
+if(storedDeck){
+    deck.update(d => d = JSON.parse(storedDeck))
 }
+
+deck.subscribe(d => {
+    if(d){
+        localStorage.setItem("DECK", JSON.stringify(d))
+    }
+})

@@ -1,20 +1,17 @@
 <script>
 	import NavBar from "./components/NavBar.svelte";
-
-	import {
-		MaterialApp,
-		Row,
-		Col,
-	} from "svelte-materialify";
+	import DeckVisuals from "./components/DeckVisuals.svelte";
+	import CommanderSearch from "./components/CommanderSearch.svelte";
+	import DeckList from "./components/DeckList.svelte";
+	import { MaterialApp, Row, Col } from "svelte-materialify";
 	let theme = "light";
 </script>
 
 <style>
 	main {
-		padding: 1em;
+		/* padding: 1em; */
 		max-width: 240px;
 		margin: 0 auto;
-		height: 100vh;
 	}
 
 	@media (min-width: 640px) {
@@ -26,14 +23,14 @@
 
 <main>
 	<MaterialApp {theme}>
+		<CommanderSearch />
 		<NavBar />
 		<Row>
-			<Col md={2} />
-			<Col md={8}>
-				<p>Deck Visualizations</p>
+			<Col md={9}>
+				<DeckVisuals />
 			</Col>
-			<Col md={2}>
-				<p>Decklist</p>
+			<Col md={3}>
+				<DeckList />
 			</Col>
 		</Row>
 	</MaterialApp>

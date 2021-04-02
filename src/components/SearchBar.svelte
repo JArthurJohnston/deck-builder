@@ -1,13 +1,16 @@
 <script>
     import { findCard } from "../APIs/ScryfallAPI";
     import { TextField } from "svelte-materialify";
+
+    export let searchText = "Search For Cards...";
+    export let onCardFound = () => {};
+
     let cardQuery;
-    let card;
 
     const sendQuery = () =>
-        findCard(cardQuery).then((r) => {
-            console.log(r);
-            card = r.data;
+        findCard(cardQuery).then((foundCard) => {
+            // card = foundCard;
+            onCardFound(foundCard)
         });
 
     const handleEnter = (e) => {
@@ -19,17 +22,6 @@
 
 <!-- <form> -->
 <TextField clearable outlined bind:value={cardQuery} on:keyup={handleEnter}>
-    Search For Cards...
+    {searchText}
 </TextField>
 <!-- </form> -->
-
-{#if card}
-    <img src={card.image_uris.normal} alt={card.name} />
-{/if}
-<p>Powered by Scryfall</p>
-
-<style>
-    p {
-        float: right;
-    }
-</style>
