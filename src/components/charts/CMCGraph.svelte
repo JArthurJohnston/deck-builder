@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
 
     import { Row, Col } from "svelte-materialify";
-    import { deck } from "../stores/CardStore.js";
+    import { deck } from "../../stores/CardStore.js";
 
     let manaValues = [];
     const cmcBins = {};
@@ -59,7 +59,7 @@
     }
 
     onMount(async () => {
-        document.getElementById("cmc-graph").appendChild(graph);
+        // document.getElementById("cmc-graph").appendChild(graph);
     });
 </script>
 

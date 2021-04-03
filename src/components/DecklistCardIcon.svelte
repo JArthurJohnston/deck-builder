@@ -3,9 +3,10 @@
     import {
         mdiAndroidDebugBridge,
         mdiCog,
-        mdiWeb,
         mdiFlash,
         mdiWalk,
+        mdiBroadcast,
+        mdiImageFilterHdr
     } from "@mdi/js";
     export let card;
 </script>
@@ -13,7 +14,9 @@
 {#if card.type_line.includes('Creature')}
     <Icon path={mdiAndroidDebugBridge} />
 {:else if card.type_line.includes('Land')}
-    <Icon path={mdiWeb} />
+    <Icon path={mdiImageFilterHdr} />
+{:else if card.type_line.includes('Enchantment')}
+    <Icon path={mdiBroadcast} />
 {:else if card.type_line.includes('Artifact')}
     <Icon path={mdiCog} />
 {:else if card.type_line.includes('Planeswalker')}

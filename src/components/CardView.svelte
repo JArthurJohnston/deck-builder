@@ -12,6 +12,7 @@
         justify-content: center;
         padding: 1em;
         flex-direction: column;
+        align-items: center;
     }
 </style>
 

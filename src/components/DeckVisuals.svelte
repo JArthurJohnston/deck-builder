@@ -1,12 +1,11 @@
 <script>
-import { onMount } from "svelte";
 
     import { Row, Col } from "svelte-materialify";
     import { deck } from "../stores/CardStore.js";
-    import CMCGraph from "./CMCGraph.svelte"
+    import CMCGraph from "./charts/CMCGraph.svelte"
+    import TypesPieChart from "./charts/TypesPieChart.svelte"
 
-    deck.subscribe((d) => {
-    });
+ 
 </script>
 
 <style>
@@ -20,5 +19,6 @@ import { onMount } from "svelte";
 </style>
 
 <div>
+    <TypesPieChart size={400}/>
     <CMCGraph />
 </div>
