@@ -1,11 +1,11 @@
 <script>
-    import { deck } from "../stores/CardStore";
     import { List, ListItem, Divider, Icon, Dialog } from "svelte-materialify";
-    import { mdiCancel } from "@mdi/js";
-    import DecklistCardIcon from "./DecklistCardIcon.svelte";
-    import CardView from "./CardView.svelte";
-    import DownloadButton from "./DownloadButton.svelte";
+    import CardView from "../CardView.svelte";
+    import DownloadButton from "../DownloadButton.svelte";
     import CommanderListItem from "./CommanderListItem.svelte";
+    import { deck } from "../../stores/CardStore";
+    import CardListItem from "./CardListItem.svelte";
+import EditCardDialog from "../EditCardDialog.svelte";
 
     let myDeck;
     let myCards;
@@ -43,15 +43,10 @@
         <Divider />
         <div>
             {#each myCards as eachCard}
-                <ListItem on:click={() => openCard(eachCard)}>
-                    <span slot="prepend">
-                        <DecklistCardIcon card={eachCard} />
-                    </span>
-                    {eachCard.name}
-                    <span slot="append" on:click={() => removeCard(eachCard)}>
-                        <Icon path={mdiCancel} />
-                    </span>
-                </ListItem>
+                <CardListItem
+                    card={eachCard}
+                    onClick={() => openCard(eachCard)}
+                    onRemove={() => removeCard(eachCard)} />
             {/each}
         </div>
         <Divider />
@@ -68,5 +63,5 @@
 </List>
 
 <Dialog bind:active>
-    <CardView card={selectedCard} />
+    <EditCardDialog card={selectedCard}/>
 </Dialog>

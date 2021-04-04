@@ -2,8 +2,8 @@
     export let card;
     export let size = "normal";
     import { ProgressLinear } from "svelte-materialify";
-    let showLoading = true;
 
+    let showLoading = true;
 </script>
 
 <style>
@@ -20,9 +20,8 @@
     {#if showLoading}
         <ProgressLinear indeterminate color="success" />
     {/if}
-    <img 
+    <img
         src={card.image_uris[size]}
         alt={card.name}
-        on:load={() => showLoading = false}
-    />
+        on:load={() => (showLoading = false)} />
 </div>

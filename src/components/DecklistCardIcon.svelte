@@ -8,19 +8,20 @@
         mdiBroadcast,
         mdiImageFilterHdr
     } from "@mdi/js";
+import { isArtifact, isCreature, isEnchantment, isLand, isPlaneswalker, isSpell } from "../helpers/CardSelectors";
     export let card;
 </script>
 
-{#if card.type_line.includes('Creature')}
+{#if isCreature(card)}
     <Icon path={mdiAndroidDebugBridge} />
-{:else if card.type_line.includes('Land')}
+{:else if isLand(card)}
     <Icon path={mdiImageFilterHdr} />
-{:else if card.type_line.includes('Enchantment')}
+{:else if isEnchantment(card)}
     <Icon path={mdiBroadcast} />
-{:else if card.type_line.includes('Artifact')}
+{:else if isArtifact(card)}
     <Icon path={mdiCog} />
-{:else if card.type_line.includes('Planeswalker')}
+{:else if isPlaneswalker(card)}
     <Icon path={mdiWalk} />
-{:else if card.type_line.includes('Instant') || card.type_line.includes('Sorcery')}
+{:else if isSpell(card)}
     <Icon path={mdiFlash} />
 {/if}

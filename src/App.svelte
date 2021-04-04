@@ -2,7 +2,7 @@
 	import NavBar from "./components/NavBar.svelte";
 	import DeckVisuals from "./components/DeckVisuals.svelte";
 	import CommanderSearch from "./components/CommanderSearch.svelte";
-	import DeckList from "./components/DeckList.svelte";
+	import DeckList from "./components/decklist/DeckList.svelte";
 	import { MaterialApp, Row, Col } from "svelte-materialify";
 	let theme = "light";
 </script>

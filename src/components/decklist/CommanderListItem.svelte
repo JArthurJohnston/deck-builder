@@ -1,6 +1,6 @@
 <script>
     import { ListItem, Icon } from "svelte-materialify";
-    import CommanderSearch from "./CommanderSearch.svelte";
+    import CommanderSearch from "../CommanderSearch.svelte";
     import { mdiSquareEditOutline, mdiChessRook } from "@mdi/js";
 
     export let commander;
