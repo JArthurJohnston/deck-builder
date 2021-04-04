@@ -1,6 +1,7 @@
 <script>
     import { onMount } from "svelte";
 
+    import * as Helpers from "../../helpers/CardSelectors";
     import { deck } from "../../stores/CardStore.js";
     import { build } from "./PieChart";
 
@@ -30,20 +31,17 @@
 
     deck.subscribe((d) => {
         d.cards.forEach((e) => {
-            if (e.type_line.includes("Creature")) {
+            if (Helpers.isCreature(e)) {
                 types.creatures = types.creatures + 1;
-            } else if (e.type_line.includes("Land")) {
+            } else if (Helpers.isLand(e)) {
                 types.lands = types.lands + 1;
-            } else if (e.type_line.includes("Enchantment")) {
+            } else if (Helpers.isEnchantment(e)) {
                 types.enchantments = types.enchantments + 1;
-            } else if (e.type_line.includes("Artifact")) {
+            } else if (Helpers.isArtifact(e)) {
                 types.artifacts = types.artifacts + 1;
-            } else if (e.type_line.includes("Planeswalker")) {
+            } else if (Helpers.isPlaneswalker(e)) {
                 types.planeswalkers = types.planeswalkers + 1;
-            } else if (
-                e.type_line.includes("Instant") ||
-                e.type_line.includes("Sorcery")
-            ) {
+            } else if (Helpers.isSpell(e)) {
                 types.spells = types.spells + 1;
             } else {
                 types.other = types.other + 1;
@@ -67,6 +65,4 @@
     }
 </style>
 
-<span>
-    <svg id="types-pie" width={size} height={size} />
-</span>
+<span> <svg id="types-pie" width={size} height={size} /> </span>
